@@ -6,7 +6,7 @@ class Knapsack_Solver:
         self.items = items
         self.n = len(items)
 
-
+    # Brute Force
     def solve_brute_force(self) -> tuple[int, list[Item]]:
         '''
         Nasz algorytm bedzie opierał sie na masce 
@@ -38,3 +38,33 @@ class Knapsack_Solver:
         Pythonic Way: List comprehension do dekodowania maski na listę obiektów Item.
         """
         return [self.items[i] for i in range(self.n) if (mask >> i) & 1]
+    
+
+    # Dynamic Programming
+    def solve_dynamic_programming(self) -> tuple[int, list[Item]]:
+         
+        dp = [[0] * (self.capacity + 1) for _ in range(self.n + 1)]
+
+        for i in range(1, self.n + 1):
+            item = self.items[i - 1]
+            for w in range(self.capacity + 1):
+                if item.weight <= w:
+                    dp[i][w] = max(dp[i - 1][w], dp[i - 1][w - item.weight] + item.value)
+                else:
+                    dp[i][w] = dp[i - 1][w]
+                    
+        # Odtwarzanie rozwiązania
+        chosen_items = []
+        w = self.capacity   
+        for i in range(self.n, 0, -1):
+            if dp[i][w] != dp[i - 1][w]:  # Ten przedmiot został wybrany
+                chosen_items.append(self.items[i - 1])
+                w -= self.items[i - 1].weight
+        
+
+        
+        return dp[self.n][self.capacity], chosen_items[::-1]
+
+        
+        
+        
