@@ -33,4 +33,8 @@ class Knapsack_Solver:
         
         return max_value,self._decode_mask(best_mask)
     
-    
+    def _decode_mask(self, mask: int) -> list[Item]:
+        """
+        Pythonic Way: List comprehension do dekodowania maski na listę obiektów Item.
+        """
+        return [self.items[i] for i in range(self.n) if (mask >> i) & 1]
