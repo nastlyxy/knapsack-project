@@ -24,4 +24,11 @@ def main():
     print(f"Max Value: {val_bf}")
     print(f"Wybrane przedmioty (ID): {[item.id for item in chosen_bf]}")
 
+    #Dynamic Programming
+    print("\nDynamic Programming Solution:")
+    val_dp, chosen_dp = solver.solve_dynamic_programming()
+    print(f"Max Value: {val_dp}")
+    print(f"Wybrane przedmioty (ID): {[item.id for item in chosen_dp]}")
 
+if __name__ == "__main__":
+    main()
