@@ -22,13 +22,19 @@ def main():
     print("Brute Force Solution:")
     val_bf, chosen_bf =solver.solve_brute_force()
     print(f"Max Value: {val_bf}")
-    print(f"Wybrane przedmioty (ID): {[item.id for item in chosen_bf]}")
+    print(f"Selected items (ID): {[item.id for item in chosen_bf]}")
 
     #Dynamic Programming
     print("\nDynamic Programming Solution:")
     val_dp, chosen_dp = solver.solve_dynamic_programming()
     print(f"Max Value: {val_dp}")
-    print(f"Wybrane przedmioty (ID): {[item.id for item in chosen_dp]}")
+    print(f"Selected items (ID): {[item.id for item in chosen_dp]}")
+
+    print("\n--- Verification ---")
+    if val_bf == val_dp:
+        print("Success: both algorithms returned the same maximum value")
+    else:
+        print("Error: results are different")
 
 if __name__ == "__main__":
     main()
