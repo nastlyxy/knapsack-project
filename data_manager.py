@@ -4,9 +4,6 @@ from item import Item
 class DataManager:
     @staticmethod
     def generate_data(filename: str, C: int, n: int, max_weight: int = 20, max_value: int = 50) -> None:
-        """
-        Generuje losowe zbiory przedmiotów i zapisuje je do pliku tekstowego
-        """
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(f"{C}\n")
             f.write(f"{n}\n")
@@ -15,7 +12,7 @@ class DataManager:
                 p = random.randint(1, max_value)
                 w = random.randint(1, max_weight)
                 f.write(f"{p} {w}\n")
-        print(f"Pomyślnie wygenerowano plik '{filename}' (n={n}, C={C}).")
+        print(f"File successfully generated '{filename}' (n={n}, C={C}).")
 
     @staticmethod
     def load_data(filename: str) -> tuple[int, list[Item]]:
