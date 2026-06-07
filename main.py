@@ -10,7 +10,7 @@ def main():
     
 
     #Generowanie danych
-    DataManager.generate_data(filename, num_items, capacity,max_weight=30, max_value=100)
+    DataManager.generate_data(filename, capacity, num_items,max_weight=30, max_value=100)
 
     #Wczytywanie danych
     C,items = DataManager.load_data(filename)
